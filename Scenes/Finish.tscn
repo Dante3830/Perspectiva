@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://b342cl8t10rek"]
+
+[ext_resource type="FontFile" uid="uid://dd0xh8xgeh62p" path="res://Assets/nasalization-rg.otf" id="1_e3rb2"]
+[ext_resource type="Script" path="res://Scripts/finish.gd" id="1_gcv0j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1qhn"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e2vkx"]
+material = SubResource("StandardMaterial3D_t1qhn")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mecgd"]
+
+[node name="Finish" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_e2vkx")
+script = ExtResource("1_gcv0j")
+
+[node name="FinishCollision" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinishCollision"]
+shape = SubResource("BoxShape3D_mecgd")
+
+[node name="FinishText1" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.521602)
+text = "META"
+font = ExtResource("1_e3rb2")
+
+[node name="FinishText2" type="Label3D" parent="."]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -0.529083, 0.0110871, 0.0637828)
+text = "META"
+font = ExtResource("1_e3rb2")
+
+[node name="FinishText3" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.593572, 0.0110871, -0.0202391)
+text = "META"
+font = ExtResource("1_e3rb2")
+
+[node name="FinishText4" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.0479777, 0.517604, -0.0202391)
+text = "META"
+font = ExtResource("1_e3rb2")
+
+[connection signal="body_entered" from="FinishCollision" to="." method="_on_finish_collision_body_entered"]
